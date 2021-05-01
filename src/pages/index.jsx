@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Footer } from 'src/components/Footer';
 import { Header } from 'src/components/Header';
 import { Main } from 'src/components/Main';
@@ -14,15 +14,25 @@ export default function Home() {
     alert(foo);
   },[]);
 
+  useEffect(() => {
+    // マウント時の処理
+    document.body.style.backgroundColor = 'lightblue';
+    console.log('マウント時');
+    // アンマウント時の処理
+    return () => {
+      document.body.style.backgroundColor = '';
+      console.log('アンマウント時');
+    };
+  }, []);
+
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
       </Head>
       <Header />
-      <a href='/about' onClick={handleClick}>
-        ボタン
-      </a>
+      <a href='/about' onClick={handleClick}>ボタン</a>
       <Main page='index' />
       <Footer />
     </div>
