@@ -7,12 +7,26 @@ import styles from 'src/styles/Home.module.css';
 
 export default function Home() {
   const [count, setCount] = useState(1);
+  const [text, setText] = useState('');
+  const [isShow, setIsShow] = useState(true);
 
   const handleClick = useCallback(() => {
     if (count < 10) {
       setCount((count) => count + 1);
     }
   }, [count]);
+
+  const handleChenge = useCallback((e) => {
+    if (e.target.value.length > 5) {
+      alert('5文字以内にしてください');
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
+  const handleDisplay = useCallback(() => {
+      setIsShow((isShow) => !isShow);
+  },[]);
 
   useEffect(() => {
     // マウント時の処理
@@ -29,8 +43,14 @@ export default function Home() {
         <title>Create Next App</title>
       </Head>
       <Header />
-      <h1>{count}</h1>
+      {isShow ? <h1>{count}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
+      <button
+        onClick={handleDisplay}
+      >
+        {isShow ? '非表示' : '表示'}
+      </button>
+      <input type='text' value={text} onChange={handleChenge} />
       <Main page='index' />
       <Footer />
     </div>
