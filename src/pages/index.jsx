@@ -1,52 +1,17 @@
 import Head from 'next/head';
-import { useCallback, useEffect, useState } from 'react';
 import { Footer } from 'src/components/Footer';
 import { Header } from 'src/components/Header';
 import { Main } from 'src/components/Main';
 import styles from 'src/styles/Home.module.css';
+import { useCounter } from 'src/hooks/useCounter';
+import { useInputArray } from 'src/hooks/useInputArray';
+import { useBgLightBlue } from 'src/hooks/useBgLightBlue';
 
 export default function Home() {
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState('');
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
+  const { count, isShow, handleClick, handleDisplay } = useCounter();
+  const { text, array, handleChenge, handleAdd } = useInputArray();
 
-  const handleClick = useCallback(() => {
-    if (count < 10) {
-      setCount((prevCount) => prevCount + 1);
-    }
-  }, [count]);
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((prevIsShow) => !prevIsShow);
-  }, []);
-
-  const handleChenge = useCallback((e) => {
-    if (e.target.value.length > 5) {
-      alert('5文字以内にしてください');
-      return;
-    }
-    setText(e.target.value.trim());
-  }, []);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if (prevArray.some((item) => item === text)) {
-        alert('同じ要素がすでに存在します。');
-        return prevArray;
-      }
-      return [...prevArray, text];
-    });
-  }, [text]);
-
-  useEffect(() => {
-    // マウント時の処理
-    document.body.style.backgroundColor = 'lightblue';
-    // アンマウント時の処理
-    return () => {
-      document.body.style.backgroundColor = '';
-    };
-  }, []);
+  useBgLightBlue();
 
   return (
     <div className={styles.container}>
@@ -57,6 +22,7 @@ export default function Home() {
       {isShow ? <h1>{count}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? '非表示' : '表示'}</button>
+
       <input type='text' value={text} onChange={handleChenge} />
       <button onClick={handleAdd}>追加</button>
       <ul>
@@ -64,6 +30,7 @@ export default function Home() {
           return <li key={item}>{item}</li>;
         })}
       </ul>
+
       <Main page='index' />
       <Footer />
     </div>
