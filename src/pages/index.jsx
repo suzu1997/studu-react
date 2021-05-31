@@ -4,7 +4,7 @@ import { Header } from 'src/components/Header';
 import { Main } from 'src/components/Main';
 import styles from 'src/styles/Home.module.css';
 
-export default function Home(props) {
+const Home = (props) => {
   const {
     count,
     isShow,
@@ -38,4 +38,6 @@ export default function Home(props) {
       <Footer />
     </div>
   );
-}
+};
+
+export default Home;
