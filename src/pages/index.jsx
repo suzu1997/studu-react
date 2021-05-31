@@ -5,7 +5,6 @@ import { Main } from 'src/components/Main';
 import styles from 'src/styles/Home.module.css';
 
 export default function Home(props) {
-  console.log(props);
   const {
     count,
     isShow,
