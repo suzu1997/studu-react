@@ -5,9 +5,8 @@ import { Main } from 'src/components/Main';
 import styles from 'src/styles/Home.module.css';
 
 export default function About(props) {
-  console.log(props);
   const {
-    count,
+    doubleCount,
     isShow,
     handleClick,
     handleDisplay,
@@ -23,9 +22,9 @@ export default function About(props) {
         <title>Create Next App</title>
       </Head>
       <Header />
-      {isShow ? <h1>{count}</h1> : null}
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? '非表示' : '表示'}</button>
+      {isShow ? <h2>{doubleCount}</h2> : null}
       <input type='text' value={text} onChange={handleChenge} />
       <button onClick={handleAdd}>追加</button>
       <ul>

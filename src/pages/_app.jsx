@@ -5,7 +5,7 @@ import { useInputArray } from 'src/hooks/useInputArray';
 import 'src/styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  const counter= useCounter();
+  const counter = useCounter();
   const inputArray = useInputArray();
   useBgLightBlue();
 
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Component {...pageProps} {...counter} {...inputArray}/>
+      <Component {...pageProps} {...counter} {...inputArray} />
     </>
   );
 }
