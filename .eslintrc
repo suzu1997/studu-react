@@ -1,3 +1,14 @@
 {
-  "extends": "next"
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "prettier"
+  ],
+  "rules": {
+    "semi": [2, "always"],
+    "no-extra-semi": "warn",
+    "no-undef": "error",
+    "quotes": ["warn", "single"] ,
+    "space-before-blocks": ["warn", { "functions": "always" }] 
+  }
 }
