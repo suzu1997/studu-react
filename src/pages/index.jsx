@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Header } from 'src/components/Header';
 import styles from 'src/styles/Home.module.css';
 
-const Home = (props) => {
+const Home = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = useCallback(async () => {
@@ -24,11 +24,13 @@ const Home = (props) => {
         <title>Create Next App</title>
       </Head>
       <Header />
-      <ol>
-        {posts.map((post) => {
-          return <li key={post.id}>{post.title}</li>;
-        })}
-      </ol>
+      {posts.length > 0 ? (
+        <ol>
+          {posts.map((post) => {
+            return <li key={post.id}>{post.title}</li>;
+          })}
+        </ol>
+      ) : null}
     </div>
   );
 };

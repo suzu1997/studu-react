@@ -15,4 +15,4 @@ export const Links = (props) => {
       })}
     </div>
   );
-}
+};

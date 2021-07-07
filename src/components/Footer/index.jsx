@@ -8,10 +8,9 @@ export const Footer = () => {
         target='_blank'
         rel='noopener noreferrer'
       >
-        Thanks by{' '}
-        {/*  eslint-disable-next-line @next/next/no-img-element */}
+        Thanks by {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img src='/vercel.svg' alt='Vercel Logo' className={classes.logo} />
       </a>
     </footer>
   );
-}
+};

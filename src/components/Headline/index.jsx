@@ -12,4 +12,4 @@ export const Headline = (props) => {
       <button onClick={props.handleReduce}>減らす</button>
     </div>
   );
-}
+};
