@@ -17,6 +17,6 @@ const MyApp = ({ Component, pageProps }) => {
       <Component {...pageProps} {...counter} {...inputArray} />
     </>
   );
-}
+};
 
 export default MyApp;
