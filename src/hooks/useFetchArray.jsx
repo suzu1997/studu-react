@@ -2,10 +2,7 @@ import useSWR from 'swr';
 import { fetcher } from 'src/utils/fetcher';
 
 export const useFetchArray = (url) => {
-  const { data, error } = useSWR(
-    url,
-    fetcher
-  );
+  const { data, error } = useSWR(url, fetcher);
 
   return {
     data,
@@ -18,17 +15,18 @@ export const useFetchArray = (url) => {
 const API_URL = 'https://jsonplaceholder.typicode.com/';
 
 export const useComments = () => {
-  return useFetchArray(
-    `${API_URL}comments`);
+  return useFetchArray(`${API_URL}comments`);
 };
 export const usePosts = () => {
-  return useFetchArray(
-    `${API_URL}posts`);
+  return useFetchArray(`${API_URL}posts`);
 };
 export const useUsers = () => {
-  return useFetchArray(
-    `${API_URL}users`);
+  return useFetchArray(`${API_URL}users`);
 };
+
 export const useCommentsByPostId = (id) => {
   return useFetchArray(id ? `${API_URL}comments?postId=${id}` : null);
+};
+export const usePostsByUserId = (id) => {
+  return useFetchArray(id ? `${API_URL}posts?userId=${id}` : null);
 };
