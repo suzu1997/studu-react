@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { fetcher } from 'src/utils/fetcher';
 
-export const useFetchArray = (url) => {
+const useFetchArray = (url) => {
   const { data, error } = useSWR(url, fetcher);
 
   return {
@@ -36,4 +36,3 @@ export const useComments = () => {
 export const useCommentsByPostId = (id) => {
   return useFetchArray(id ? `${API_URL}comments?postId=${id}` : null);
 };
-
