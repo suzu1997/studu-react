@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { PostByCommentId } from 'src/components/Post/PostByCommentId';
 import { useComment } from 'src/hooks/useComment';
 
 export const Comment = () => {
@@ -18,6 +19,9 @@ export const Comment = () => {
       </Head>
       <h1>{comment?.name}</h1>
       <p>{comment?.body}</p>
+      <p>{`by ${comment?.email}`}</p>
+      <h2>Post</h2>
+      <PostByCommentId id={comment?.postId}/>
     </div>
   );
 };
