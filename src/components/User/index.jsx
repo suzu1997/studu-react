@@ -17,17 +17,19 @@ export const User = () => {
       <Head>
         <title>{user.name}</title>
       </Head>
-      <h1>{user.name}</h1>
-      <ol>
-        <li>{user.username}</li>
-        <li>{user.email}</li>
-        <li>{user.address.city}</li>
-        <li>{user.phone}</li>
-        <li>{user.website}</li>
-        <li>{user.company.name}</li>
-      </ol>
-      <h2>Posts list</h2>
-      <PostsByUserId id={user.id} />
+      <h1 className='font-bold text-3xl'>{user.name}</h1>
+      <ul className='list-inside list-disc mt-6 text-xl'>
+        <li>username: {user.username}</li>
+        <li>email: {user.email}</li>
+        <li>address: {user.address.city}</li>
+        <li>phone number: {user.phone}</li>
+        <li>website: {user.website}</li>
+        <li>company: {user.company.name}</li>
+      </ul>
+      <h2 className='text-xl font-bold mt-6'>Posts list</h2>
+      <div className='mt-4'>
+        <PostsByUserId id={user.id} />
+      </div>
     </div>
   );
 };

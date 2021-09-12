@@ -17,11 +17,12 @@ export const Comment = () => {
       <Head>
         <title>{comment?.name}</title>
       </Head>
-      <h1>{comment?.name}</h1>
-      <p>{comment?.body}</p>
-      <p>{`by ${comment?.email}`}</p>
-      <h2>Post</h2>
-      <PostByCommentId id={comment?.postId}/>
+      <div className='text-lg'>{comment?.name} ({comment?.email})</div>
+      <h1 className='text-3xl font-bold'>{comment?.body}</h1>
+      <h2 className='text-xl font-bold mt-10'>Post</h2>
+      <div className='mt-2'>
+        <PostByCommentId id={comment?.postId}/>
+      </div>
     </div>
   );
 };
