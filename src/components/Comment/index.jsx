@@ -6,7 +6,7 @@ export const Comment = () => {
   const { error, comment, isLoading } = useComment();
 
   if (isLoading) {
-    return <div>ローディング中...</div>;
+    return <div>Loading...</div>;
   }
   if (error) {
     return <div>{error.message}</div>;

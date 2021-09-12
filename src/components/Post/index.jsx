@@ -9,7 +9,7 @@ export const Post = () => {
   const { data, error, isLoading } = usePost(router.query.id);
 
   if (isLoading) {
-    return <div>ローディング中...</div>;
+    return <div>Loading...</div>;
   }
   if (error) {
     return <div>{error.message}</div>;
@@ -23,7 +23,7 @@ export const Post = () => {
       <UserByUserId id={data.userId}/>
       <h1 className='text-3xl font-bold'>{data?.title}</h1>
       <p className='text-xl text-gray-900 mt-2'>{data?.body}</p>
-      <h2 className='text-xl font-bold mt-10'>コメント一覧</h2>
+      <h2 className='text-xl font-bold mt-10'>Comments List</h2>
       <div className='mt-4'>
         <CommentsByPostId id={data.id}/>
       </div>

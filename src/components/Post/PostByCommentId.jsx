@@ -6,7 +6,7 @@ export const PostByCommentId = (props) => {
   const { data, error } = usePost(props.id);
 
   if (!data && !error) {
-    return <div>ローディング中...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {

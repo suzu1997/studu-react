@@ -5,7 +5,7 @@ export const Users = () => {
   const { data, error, isLoading, isEmpty } = useUsers();
 
   if (isLoading) {
-    return <div>ローディング中...</div>;
+    return <div>Loading...</div>;
   }
   if (error) {
     return <div>{error.message}</div>;

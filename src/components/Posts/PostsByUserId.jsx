@@ -7,7 +7,7 @@ export const PostsByUserId = (props) => {
   const { data, error, isLoading, isEmpty } = usePostsByUserId(id);
 
   if (isLoading) {
-    return <div>ローディング中...</div>;
+    return <div>Loading...</div>;
   }
   if (error) {
     return <div>{error.message}</div>;
