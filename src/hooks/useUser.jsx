@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { API_URL } from 'src/utils/const';
 import useSWRImmutable from 'swr/immutable';
 
 export const useUser = () => {
@@ -6,7 +7,7 @@ export const useUser = () => {
   
   const { data: user, error: userError } = useSWRImmutable(
     router.query.id
-      ? `https://jsonplaceholder.typicode.com/users/${router.query.id}`
+      ? `${API_URL}/users/${router.query.id}`
       : null
   );
 

@@ -1,3 +1,4 @@
+import { API_URL } from 'src/utils/const';
 import useSWRImutable from 'swr/immutable';
 
 const useFetchArray = (url) => {
@@ -11,27 +12,25 @@ const useFetchArray = (url) => {
   };
 };
 
-const API_URL = 'https://jsonplaceholder.typicode.com/';
-
 //posts
 export const usePosts = () => {
-  return useFetchArray(`${API_URL}posts`);
+  return useFetchArray(`${API_URL}/posts`);
 };
 
 export const usePostsByUserId = (id) => {
-  return useFetchArray(id ? `${API_URL}posts?userId=${id}` : null);
+  return useFetchArray(id ? `${API_URL}/posts?userId=${id}` : null);
 };
 
 //users
 export const useUsers = () => {
-  return useFetchArray(`${API_URL}users`);
+  return useFetchArray(`${API_URL}/users`);
 };
 
 //comments
 export const useComments = () => {
-  return useFetchArray(`${API_URL}comments`);
+  return useFetchArray(`${API_URL}/comments`);
 };
 
 export const useCommentsByPostId = (id) => {
-  return useFetchArray(id ? `${API_URL}comments?postId=${id}` : null);
+  return useFetchArray(id ? `${API_URL}/comments?postId=${id}` : null);
 };
