@@ -3,26 +3,35 @@ import { Comment } from 'src/components/Comment';
 import { SWRConfig } from 'swr';
 
 export const getStaticPaths = async () => {
-  const comments = await fetch('https://jsonplaceholder.typicode.com/comments');
+  const comments = await fetch(
+    'https://jsonplaceholder.typicode.com/comments?_limit=10'
+  );
   const commentsData = await comments.json();
   const paths = commentsData.map((comment) => ({
     params: { id: comment.id.toString() },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: 'blocking' };
 };
 
 export const getStaticProps = async (ctx) => {
   const { id } = ctx.params;
   const COMMENT_API_URL = `https://jsonplaceholder.typicode.com/comments/${id}`;
-  const comments = await fetch(COMMENT_API_URL);
-  const commentsData = await comments.json();
+  const comment = await fetch(COMMENT_API_URL);
+
+if (!comment.ok) {
+  return {
+    notFound: true,
+  };
+}
+
+  const commentData = await comment.json();
 
   return {
     props: {
       fallback: {
         // APIを叩くときの初期値をuserDataにする
-        [COMMENT_API_URL]: commentsData,
+        [COMMENT_API_URL]: commentData,
       },
     },
   };
