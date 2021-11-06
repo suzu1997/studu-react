@@ -1,11 +1,14 @@
 import Link from 'next/link';
+import { useFetch } from 'src/hooks/useFetch';
 
-import { usePost } from 'src/hooks/usePost';
+import { API_URL } from 'src/utils/const';
 
-export const PostByCommentId = (props) => {
-  const { data, error } = usePost(props.id);
+export const PostTitleByCommentId = (props) => {
+  const { data, error, isLoading } = useFetch(
+    props.id ? `${API_URL}/posts/${props.id}` : null
+  );
 
-  if (!data && !error) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
